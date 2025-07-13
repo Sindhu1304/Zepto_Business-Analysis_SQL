@@ -40,17 +40,23 @@ Before deriving business insights, basic SQL queries were executed to understand
 
 1. Total Rows in the Dataset
 
-sql.
+```sql
+
 SELECT COUNT(*) FROM zepto;
 💡 Insight: The dataset contains 3,732 product-level records (SKUs).
 
+
 2. 🧾 View Sample Records
+
+```sql
 
 SELECT * FROM zepto LIMIT 10;
 💡 Insight: Used to observe patterns and detect data anomalies in the first few rows.
 
 
 3.  Check Column Data Types
+
+```sql
 
 SELECT column_name, data_type
 FROM information_schema.columns
@@ -59,6 +65,7 @@ WHERE table_name = 'zepto';
 💡 Insight: Confirms correct data types (numeric, boolean, etc.) for each column.
 
 4.  Check for NULL or Missing Values
+```sql
 
 SELECT *
 FROM zepto
@@ -69,7 +76,8 @@ WHERE name IS NULL OR category IS NULL OR mrp IS NULL
 
 💡 Insight: Ensures completeness — no missing data detected in key columns.
 
-.  Detect Invalid Prices (MRP or Selling Price = 0)
+5.  Detect Invalid Prices (MRP or Selling Price = 0)
+```sql
 
 SELECT * FROM zepto
 WHERE mrp = 0 OR discountedSellingPrice = 0;
@@ -77,12 +85,14 @@ WHERE mrp = 0 OR discountedSellingPrice = 0;
 💡 Insight: Flags products with zero price that may need cleaning or exclusion.
 
 6.  Distinct Product Categories
+```sql
 
 SELECT DISTINCT category FROM zepto ORDER BY category;
 
 💡 Insight: Lists all unique product categories — useful for segmentation.
 
 7.  Find Duplicate Product Names
+```sql
 
 SELECT name, COUNT(*) AS count
 FROM zepto
