@@ -167,71 +167,93 @@ This project demonstrates how SQL-driven analysis and Power BI visualizations ca
 - **Operational strategy** through weight-based segmentation to guide logistics and fulfillment
 - **Category-level marketing** via discount and price-per-gram analysis to target promotions
 
+## 📊 Data Exploration — Zepto Dataset
 
-👇
-
-📊 Data Exploration — Zepto Dataset
 Before diving into business insights, essential SQL queries were executed to explore the structure, cleanliness, and schema of the Zepto inventory dataset.
 
-1. 🔢 Total Rows in the Dataset
-sql
-Copy
-Edit
+---
+
+### 1. 🔢 Total Rows in the Dataset
+
+```sql
 SELECT COUNT(*) FROM zepto;
-💡 Insight: The dataset contains 3,732 product-level records (SKUs).
+```
 
-2. 🧾 View Sample Records
-sql
-Copy
-Edit
+💡 **Insight**: The dataset contains 3,732 product-level records (SKUs).
+
+---
+
+### 2. 🧾 View Sample Records
+
+```sql
 SELECT * FROM zepto LIMIT 10;
-💡 Insight: Used to observe patterns and detect data anomalies in the first few rows.
+```
 
-3. 🧬 Check Column Data Types
-sql
-Copy
-Edit
+💡 **Insight**: Used to observe patterns and detect data anomalies in the first few rows.
+
+---
+
+### 3. 🧬 Check Column Data Types
+
+```sql
 SELECT column_name, data_type
 FROM information_schema.columns
 WHERE table_name = 'zepto';
-💡 Insight: Confirms correct data types (numeric, boolean, etc.) for each column.
+```
 
-4. 🚨 Check for NULL or Missing Values
-sql
-Copy
-Edit
+💡 **Insight**: Confirms correct data types (numeric, boolean, etc.) for each column.
+
+---
+
+### 4. 🚨 Check for NULL or Missing Values
+
+```sql
 SELECT *
 FROM zepto
 WHERE name IS NULL OR category IS NULL OR mrp IS NULL
    OR discountPercent IS NULL OR availableQuantity IS NULL
    OR discountedSellingPrice IS NULL OR weightInGms IS NULL
    OR outOfStock IS NULL OR quantity IS NULL;
-💡 Insight: Ensures completeness — no missing data detected in key columns.
+```
 
-5. ❗ Detect Invalid Prices (MRP or Selling Price = 0)
-sql
-Copy
-Edit
+💡 **Insight**: Ensures completeness — no missing data detected in key columns.
+
+---
+
+### 5. ❗ Detect Invalid Prices (MRP or Selling Price = 0)
+
+```sql
 SELECT * FROM zepto
 WHERE mrp = 0 OR discountedSellingPrice = 0;
-💡 Insight: Flags products with zero price that may need cleaning or exclusion.
+```
 
-6. 🏷️ Distinct Product Categories
-sql
-Copy
-Edit
+💡 **Insight**: Flags products with zero price that may need cleaning or exclusion.
+
+---
+
+### 6. 🏷️ Distinct Product Categories
+
+```sql
 SELECT DISTINCT category FROM zepto ORDER BY category;
-💡 Insight: Lists all unique product categories — useful for segmentation.
+```
 
-7. 📦 Find Duplicate Product Names
-sql
-Copy
-Edit
+💡 **Insight**: Lists all unique product categories — useful for segmentation.
+
+---
+
+### 7. 📦 Find Duplicate Product Names
+
+```sql
 SELECT name, COUNT(*) AS count
 FROM zepto
 GROUP BY name
 HAVING COUNT(*) > 1;
-💡 Insight: Highlights same products offered in different sizes or packs.
+```
+
+💡 **Insight**: Highlights same products offered in different sizes or packs.
+
+---
+
 
 
 
