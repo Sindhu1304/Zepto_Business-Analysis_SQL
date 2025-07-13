@@ -1,5 +1,8 @@
-# 🛒 Zepto E-commerce Inventory Analysis (Data Business Analysis0
+# 🛒 Zepto E-commerce Inventory Analysis (Data Business Analysis.
 This project simulates a real-world business analyst case study inspired by Zepto, one of India’s fastest-growing quick-commerce startups. The goal was to uncover actionable insights from product inventory data using SQL and visualize them using Power BI.
+
+<img width="1068" height="716" alt="image" src="https://github.com/user-attachments/assets/7c5f9b17-e5e7-40fe-9dcc-bbc8bd6532af" />
+
 
 #  Project Overview
 
